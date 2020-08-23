@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/otp-input-x.esm.js"></script>
+  <script nomodule src="/build/otp-input-x.js"></script>
+  <style>
+    html {
+       filter:invert(1) hue-rotate(180deg);
+    }
+  </style>
+</head>
+
+<body style="background:#F6F6F6;">
+  <script>
+    const test = (a) => {
+      console.log('VALUE', a);
+    };
+  </script>
+  <h4>OTP Input</h4>
+  <otp-input-x size="6" format="number" otp="" style-name="md"></otp-input-x>
+  <script>
+    const ele = document.querySelector('otp-input-x');
+    console.log('test test',ele);
+    ele.addEventListener('onOTPChange', event => { console.log('EVENT RECEIVED', event.detail); });
+    ele.addEventListener('onOTPComplete', event => { console.log('FULLFILED RECEIVED', event.detail); });
+  </script>
+</body>
+
+</html>
