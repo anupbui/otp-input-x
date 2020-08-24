@@ -1,17 +1,19 @@
 
 # OTP Input Web Component
 
-This is a project for OTP Input Web Component using Stencil with type support all major frameworkslike react, angular, vuejs.
+This is a project for OTP Input Web Component using Stencil with type support all major frameworks like react, angular, vuejs.
 
-Stencil is also great for building entire apps. For that, use the [stencil-app-starter](https://github.com/ionic-team/stencil-app-starter) instead.
+OTP Input X is framework agnostic web component 
 
-#  OTP Input 
+#  OTP Input web component is build using Stencil JS
 
 Stencil is a compiler for building fast web apps using Web Components.
 
 Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
 
 Stencil components are just Web Components, so they work in any major framework or with no framework at all.
+
+Stencil is also great for building entire apps. For that, use the [stencil-app-starter](https://github.com/ionic-team/stencil-app-starter) instead.
 
 ## Getting Started
 
