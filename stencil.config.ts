@@ -1,5 +1,7 @@
 import { Config } from '@stencil/core';
-import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target'
+import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
+import { reactOutputTarget } from '@stencil/react-output-target';
+
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: ['otp-input-x'],
@@ -23,18 +25,17 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
-    /*angularOutputTarget({
+    angularOutputTarget({
       componentCorePackage: 'otp-input-x',
-      directivesProxyFile: './src/component/otp-input-x.tsx',
+      directivesProxyFile: './angular-lib/component/otp-input-x.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
     }),
     reactOutputTarget({
       componentCorePackage: 'otp-input-x',
-      proxiesFile: './src/component/otp-input-x.ts',
-      loaderDir: '../loader-react',
+      proxiesFile: './react-lib/component/otp-input-x.tsx',
       includePolyfills: true,
       includeDefineCustomElements: true,
-    }),*/
+    }),
     {
       type: 'dist-custom-elements-bundle'
     },

@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, EventEmitter, Event, Element, Watch } from '@stencil/core';
-import { getOTPArr, otpHandleKeys } from '../../utils/utils';
+import { getOTPArr, otpHandleKeys } from './utils/utils';
 
 @Component({
   tag: 'otp-input-x',
