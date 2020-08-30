@@ -5,6 +5,49 @@ This is a project for OTP Input Web Component using Stencil with type support al
 
 OTP Input X is framework agnostic web component 
 
+# Usage in React and Angular
+
+For React Use import as 
+
+```
+import { OtpInputX } from 'otp-input-x/react';
+```
+
+JSX
+
+```
+const [otp, setOtp] = useState("");
+
+JSX:
+<OtpInputX otp={otp} size="4" onOtpComplete={(e) => { setOtp(e.detail); }}></OtpInputX>
+```
+[Visit React Example](https://codesandbox.io/s/angry-violet-5i51b?file=/src/App.js)
+
+For Angular Use import as 
+
+```
+import { OtpInputX } from 'otp-input-x/ngx';
+```
+
+[Visit Angular Example](https://codesandbox.io/s/magical-pare-l0uyo?file=/src/app/app.component.ts)
+
+## Properties
+
+| Property    | Attribute    | Description | Type                   | Default    |
+| ----------- | ------------ | ----------- | ---------------------- | ---------- |
+| `format`    | `format`     |             | `"number" \| "text"`   | `'number'` |
+| `otp`       | `otp`        |             | `string`               | `''`       |
+| `size`      | `size`       |             | `number`               | `6`        |
+| `styleName` | `style-name` |             | `"lg" \| "md" \| "sm"` | `'md'`     |
+
+
+## Events
+
+| Event         | Description   | Type                  |
+| ------------- | ------------- | --------------------- |
+| `otpChange`   |`onOtpChange`  | `CustomEvent<string>` |
+| `otpComplete` |`onOtpComplete`| `CustomEvent<string>` |
+
 #  OTP Input web component is build using Stencil JS
 
 Stencil is a compiler for building fast web apps using Web Components.
@@ -45,9 +88,4 @@ The first step for all three of these strategies is to [publish to NPM](https://
 ### Node Modules
 - Run `npm install otp-input-x --save`
 - Put a script tag similar to this `<script src='node_modules/otp-input-x/dist/otp-input-x.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
-
-### In a react app
-- Run `npm install otp-input-x --save`
-- Add an import to the npm packages `import otp-input-x;`
 - Then you can use the element anywhere in your template, JSX, html etc
