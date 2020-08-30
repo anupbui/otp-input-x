@@ -1,6 +1,6 @@
 {
   "name": "otp-input-x",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "OTP Input Web Component with TypeScript support and its framework agnostic",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -29,7 +29,8 @@
   },
   "devDependencies": {
     "@stencil/angular-output-target": "0.0.5",
-    "@stencil/react-output-target": "0.0.9"
+    "@stencil/react-output-target": "0.0.9",
+    "@stencil/vue-output-target": "^0.1.1"
   },
   "repository": {
     "type": "git",
@@ -50,5 +51,7 @@
   "bugs": {
     "url": "https://github.com/anupbui/otp-input-x/issues"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

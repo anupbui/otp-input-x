@@ -149,17 +149,12 @@ OtpInputX = __decorate([
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 defineCustomElements(window);
-/** @type {?} */
-const DECLARATIONS = [
-    // proxies
-    OtpInputX
-];
 class OtpInputXModule {
 }
 OtpInputXModule.decorators = [
     { type: NgModule, args: [{
-                declarations: DECLARATIONS,
-                exports: DECLARATIONS,
+                declarations: [OtpInputX],
+                exports: [OtpInputX],
                 imports: [],
                 providers: []
             },] },

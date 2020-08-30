@@ -5,9 +5,9 @@ This is a project for OTP Input Web Component using Stencil with type support al
 
 OTP Input X is framework agnostic web component 
 
-# Usage in React and Angular
+## Usage in React, Angular , VueJs
 
-For React Use import as 
+### React Use import as 
 
 ```
 import { OtpInputX } from 'otp-input-x/react';
@@ -23,13 +23,22 @@ JSX:
 ```
 [Visit React Example](https://codesandbox.io/s/angry-violet-5i51b?file=/src/App.js)
 
-For Angular Use import as 
+### Angular Use import as 
 
 ```
 import { OtpInputX } from 'otp-input-x/ngx';
 ```
 
 [Visit Angular Example](https://codesandbox.io/s/magical-pare-l0uyo?file=/src/app/app.component.ts)
+
+
+### VueJs Use import as 
+
+```
+import OtpInputX from "otp-input-x/vue";
+```
+
+[Visit VueJs Example](https://codesandbox.io/s/competent-ptolemy-yuouv?file=/src/main.js)
 
 ## Properties
 
