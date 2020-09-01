@@ -39,11 +39,16 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
+    {
+      type: 'angular',
+      componentCorePackage: 'otp-input-x',
+      directivesProxyFile: './angular-lib/component/otp-input-x.ts',
+    },/*,
     angularOutputTarget({
       componentCorePackage: 'otp-input-x',
       directivesProxyFile: './angular-lib/component/otp-input-x.ts',
       valueAccessorConfigs: angularValueAccessorBindings
-    }),
+    }),*/
     reactOutputTarget({
       componentCorePackage: 'otp-input-x',
       proxiesFile: './react-lib/component/otp-input-x.tsx',
@@ -64,6 +69,6 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null, // disable service workers
-    },
-  ],
+    }
+  ]
 };

@@ -7,7 +7,7 @@ OTP Input X is framework agnostic web component
 
 ## Usage in React, Angular , VueJs
 
-### React Use import as 
+### React Use import as [Stable]
 
 ```
 import { OtpInputX } from 'otp-input-x/react';
@@ -23,21 +23,21 @@ JSX:
 ```
 [Visit React Example](https://codesandbox.io/s/angry-violet-5i51b?file=/src/App.js)
 
-### Angular Use import as 
+### [Unstable - Need contriution] Angular Use import as 
 
 ```
 import { OtpInputX } from 'otp-input-x/ngx';
 ```
-
+#### Use only if example is working
 [Visit Angular Example](https://codesandbox.io/s/magical-pare-l0uyo?file=/src/app/app.component.ts)
 
 
-### VueJs Use import as 
+### [Unstable - Need contriution]  VueJs Use import as 
 
 ```
 import OtpInputX from "otp-input-x/vue";
 ```
-
+#### Use only if example is working
 [Visit VueJs Example](https://codesandbox.io/s/competent-ptolemy-yuouv?file=/src/main.js)
 
 ## Properties

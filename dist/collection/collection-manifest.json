@@ -1,0 +1,12 @@
+{
+  "entries": [
+    "./components/otp-input-x/otp-input-x.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.17.3",
+    "typescriptVersion": "3.9.7"
+  },
+  "collections": [],
+  "bundles": []
+}

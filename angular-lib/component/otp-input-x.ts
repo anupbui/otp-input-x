@@ -1,31 +1,60 @@
+/* eslint-disable */
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone } from '@angular/core';
-import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
-
-import { Components } from 'otp-input-x';
-
-import { OtpInputX as IOtpInputX } from 'otp-input-x/dist/custom-elements/components/otp-input-x';
-export declare interface OtpInputX extends Components.OtpInputX {}
-@ProxyCmp({
-  inputs: ['format', 'otp', 'size', 'styleName']
-})
-@Component({
-  selector: 'otp-input-x',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['format', 'otp', 'size', 'styleName'],
-  outputs: ['otpComplete', 'otpChange']
-})
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from "@angular/core";
+import { fromEvent } from "rxjs";
+export const proxyInputs = (Cmp: any, inputs: string[]) => {
+    const Prototype = Cmp.prototype;
+    inputs.forEach(item => {
+        Object.defineProperty(Prototype, item, {
+            get() {
+                return this.el[item];
+            },
+            set(val: any) {
+                this.z.runOutsideAngular(() => (this.el[item] = val));
+            }
+        });
+    });
+};
+export const proxyMethods = (Cmp: any, methods: string[]) => {
+    const Prototype = Cmp.prototype;
+    methods.forEach(methodName => {
+        Prototype[methodName] = function () {
+            const args = arguments;
+            return this.z.runOutsideAngular(() => this.el[methodName].apply(this.el, args));
+        };
+    });
+};
+export const proxyOutputs = (instance: any, el: any, events: string[]) => {
+    events.forEach(eventName => instance[eventName] = fromEvent(el, eventName));
+};
+function ProxyCmp(opts: {
+    inputs?: any;
+    methods?: any;
+}) {
+    const decorator = function (cls: any) {
+        if (opts.inputs) {
+            proxyInputs(cls, opts.inputs);
+        }
+        if (opts.methods) {
+            proxyMethods(cls, opts.methods);
+        }
+        return cls;
+    };
+    return decorator;
+}
+import { Components } from "otp-input-x";
+export declare interface OtpInputX extends Components.OtpInputX {
+}
+@ProxyCmp({ inputs: ["format", "otp", "size", "styleName"] })
+@Component({ selector: "otp-input-x", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["format", "otp", "size", "styleName"] })
 export class OtpInputX {
-  /**  */
-  otpComplete!: IOtpInputX['otpComplete'];
-  /**  */
-  otpChange!: IOtpInputX['otpChange'];
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-    proxyOutputs(this, this.el, ['otpComplete', 'otpChange']);
-  }
+    otpComplete!: EventEmitter<CustomEvent>;
+    otpChange!: EventEmitter<CustomEvent>;
+    protected el: HTMLElement;
+    constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+        c.detach();
+        this.el = r.nativeElement;
+        proxyOutputs(this, this.el, ["otpComplete", "otpChange"]);
+    }
 }

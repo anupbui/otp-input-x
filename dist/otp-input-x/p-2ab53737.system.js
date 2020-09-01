@@ -1,0 +1,1 @@
+System.register(["./p-96d58427.system.js","./p-2f69af84.system.js"],(function(){"use strict";var t,e;return{setters:[function(e){t=e.b},function(t){e=t.p}],execute:function(){e().then((function(e){return t([["p-3a26db75.system",[[1,"otp-input-x",{size:[2],format:[1],otp:[1025],styleName:[1,"style-name"]}]]]],e)}))}}}));
