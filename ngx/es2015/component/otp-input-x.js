@@ -1,11 +1,18 @@
-import { __decorate } from 'tslib';
-import { ɵɵdefineComponent, ɵɵprojectionDef, ɵɵprojection, ɵɵdirectiveInject, ChangeDetectorRef, ElementRef, NgZone, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { defineCustomElements } from 'otp-input-x/loader';
-
+import { __decorate } from "tslib";
+/**
+ * @fileoverview added by tsickle
+ * Generated from: component/otp-input-x.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/* eslint-disable */
+/* tslint:disable */
+/* auto-generated angular directive proxies */
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { fromEvent } from "rxjs";
+import * as i0 from "@angular/core";
 const _c0 = ["*"];
 /** @type {?} */
-const proxyInputs = (/**
+export const proxyInputs = (/**
  * @param {?} Cmp
  * @param {?} inputs
  * @return {?}
@@ -39,7 +46,7 @@ const proxyInputs = (/**
     }));
 });
 /** @type {?} */
-const proxyMethods = (/**
+export const proxyMethods = (/**
  * @param {?} Cmp
  * @param {?} methods
  * @return {?}
@@ -66,7 +73,7 @@ const proxyMethods = (/**
     }));
 });
 /** @type {?} */
-const proxyOutputs = (/**
+export const proxyOutputs = (/**
  * @param {?} instance
  * @param {?} el
  * @param {?} events
@@ -114,30 +121,34 @@ let OtpInputX = /** @class */ (() => {
             proxyOutputs(this, this.el, ["otpComplete", "otpChange"]);
         }
     };
-    /** @nocollapse */ OtpInputX.ɵfac = function OtpInputX_Factory(t) { return new (t || OtpInputX)(ɵɵdirectiveInject(ChangeDetectorRef), ɵɵdirectiveInject(ElementRef), ɵɵdirectiveInject(NgZone)); };
-    /** @nocollapse */ OtpInputX.ɵcmp = ɵɵdefineComponent({ type: OtpInputX, selectors: [["otp-input-x"]], inputs: { format: "format", otp: "otp", size: "size", styleName: "styleName" }, ngContentSelectors: _c0, decls: 1, vars: 0, template: function OtpInputX_Template(rf, ctx) { if (rf & 1) {
-            ɵɵprojectionDef();
-            ɵɵprojection(0);
+    /** @nocollapse */ OtpInputX.ɵfac = function OtpInputX_Factory(t) { return new (t || OtpInputX)(i0.ɵɵdirectiveInject(i0.ChangeDetectorRef), i0.ɵɵdirectiveInject(i0.ElementRef), i0.ɵɵdirectiveInject(i0.NgZone)); };
+    /** @nocollapse */ OtpInputX.ɵcmp = i0.ɵɵdefineComponent({ type: OtpInputX, selectors: [["otp-input-x"]], inputs: { format: "format", otp: "otp", size: "size", styleName: "styleName" }, ngContentSelectors: _c0, decls: 1, vars: 0, template: function OtpInputX_Template(rf, ctx) { if (rf & 1) {
+            i0.ɵɵprojectionDef();
+            i0.ɵɵprojection(0);
         } }, encapsulation: 2, changeDetection: 0 });
     OtpInputX = __decorate([
         ProxyCmp({ inputs: ["format", "otp", "size", "styleName"] })
     ], OtpInputX);
     return OtpInputX;
 })();
-
-/**
- * @fileoverview added by tsickle
- * Generated from: otp-input-x-module.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-defineCustomElements(window);
-let OtpInputXModule = /** @class */ (() => {
-    class OtpInputXModule {
-    }
-    /** @nocollapse */ OtpInputXModule.ɵmod = ɵɵdefineNgModule({ type: OtpInputXModule });
-    /** @nocollapse */ OtpInputXModule.ɵinj = ɵɵdefineInjector({ factory: function OtpInputXModule_Factory(t) { return new (t || OtpInputXModule)(); }, providers: [], imports: [[]] });
-    return OtpInputXModule;
-})();
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(OtpInputXModule, { declarations: [OtpInputX], exports: [OtpInputX] }); })();
-
-export { OtpInputX, OtpInputXModule, proxyInputs, proxyMethods, proxyOutputs };
+export { OtpInputX };
+/*@__PURE__*/ (function () { i0.ɵsetClassMetadata(OtpInputX, [{
+        type: Component,
+        args: [{ selector: "otp-input-x", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["format", "otp", "size", "styleName"] }]
+    }], function () { return [{ type: i0.ChangeDetectorRef }, { type: i0.ElementRef }, { type: i0.NgZone }]; }, null); })();
+if (false) {
+    /** @type {?} */
+    OtpInputX.prototype.otpComplete;
+    /** @type {?} */
+    OtpInputX.prototype.otpChange;
+    /**
+     * @type {?}
+     * @protected
+     */
+    OtpInputX.prototype.el;
+    /**
+     * @type {?}
+     * @protected
+     */
+    OtpInputX.prototype.z;
+}

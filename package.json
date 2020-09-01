@@ -1,6 +1,6 @@
 {
   "name": "otp-input-x",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "OTP Input Web Component with TypeScript support and its framework agnostic",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -15,7 +15,8 @@
     "dist/",
     "loader/",
     "react/",
-    "ngx/"
+    "ngx/",
+    "vue/"
   ],
   "scripts": {
     "build": "stencil build --docs",
@@ -40,19 +41,18 @@
   "license": "MIT",
   "author": "",
   "keywords": [
-    "otp-input",
+    "otp input",
     "otp input type",
     "otp input react",
     "otp input typescript",
-    "otp input anguludo ar",
+    "otp input angular",
+    "otp input ng",
+    "otp input stencil",
     "otp input vue",
     "otp input web component"
   ],
   "homepage": "https://github.com/anupbui/otp-input-x",
   "bugs": {
     "url": "https://github.com/anupbui/otp-input-x/issues"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   }
 }
