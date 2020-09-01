@@ -1,1 +1,1 @@
-import{b as p}from"./p-d895a4b3.js";import{p as t}from"./p-cbcb77ac.js";t().then(t=>p([["p-6088d792",[[1,"otp-input-x",{size:[2],format:[1],otp:[1025],styleName:[1,"style-name"]}]]]],t));
+import{p as t,b as p}from"./p-4b982196.js";(()=>{const p=import.meta.url,e={};return""!==p&&(e.resourcesUrl=new URL(".",p).href),t(e)})().then(t=>p([["p-0f409934",[[1,"otp-input-x",{size:[2],format:[1],otp:[1025],styleName:[1,"style-name"]}]]]],t));

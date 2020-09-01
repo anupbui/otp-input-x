@@ -1,24 +1,3 @@
-'use strict';
-
-function _interopNamespace(e) {
-  if (e && e.__esModule) { return e; } else {
-    var n = {};
-    if (e) {
-      Object.keys(e).forEach(function (k) {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () {
-            return e[k];
-          }
-        });
-      });
-    }
-    n['default'] = e;
-    return n;
-  }
-}
-
 const NAMESPACE = 'otp-input-x';
 
 let scopeId;
@@ -26,7 +5,6 @@ let hostTagName;
 let isSvgMode = false;
 let queuePending = false;
 const win = typeof window !== 'undefined' ? window : {};
-const CSS =  win.CSS ;
 const doc = win.document || { head: {} };
 const plt = {
     $flags$: 0,
@@ -37,7 +15,6 @@ const plt = {
     rel: (el, eventName, listener, opts) => el.removeEventListener(eventName, listener, opts),
     ce: (eventName, opts) => new CustomEvent(eventName, opts),
 };
-const supportsShadow =  /*@__PURE__*/ (() => (doc.head.attachShadow + '').indexOf('[native') > -1)() ;
 const promiseResolve = (v) => Promise.resolve(v);
 const supportsConstructibleStylesheets =  /*@__PURE__*/ (() => {
         try {
@@ -91,18 +68,7 @@ const addStyle = (styleContainerNode, cmpMeta, mode, hostElm) => {
             }
             if (!appliedStyles.has(scopeId)) {
                 {
-                    if ( plt.$cssShim$) {
-                        styleElm = plt.$cssShim$.createHostStyle(hostElm, scopeId, style, !!(cmpMeta.$flags$ & 10 /* needsScopedEncapsulation */));
-                        const newScopeId = styleElm['s-sc'];
-                        if (newScopeId) {
-                            scopeId = newScopeId;
-                            // we don't want to add this styleID to the appliedStyles Set
-                            // since the cssVarShim might need to apply several different
-                            // stylesheets for the same component
-                            appliedStyles = null;
-                        }
-                    }
-                    else {
+                    {
                         styleElm = doc.createElement('style');
                         styleElm.innerHTML = style;
                     }
@@ -124,7 +90,7 @@ const attachStyles = (hostRef) => {
     const elm = hostRef.$hostElement$;
     const flags = cmpMeta.$flags$;
     const endAttachStyles = createTime('attachStyles', cmpMeta.$tagName$);
-    const scopeId = addStyle( supportsShadow && elm.shadowRoot ? elm.shadowRoot : elm.getRootNode(), cmpMeta, hostRef.$modeName$, elm);
+    const scopeId = addStyle( elm.shadowRoot ? elm.shadowRoot : elm.getRootNode(), cmpMeta);
     if ( flags & 10 /* needsScopedEncapsulation */) {
         // only required when we're NOT using native shadow dom (slot)
         // or this browser doesn't support native shadow dom
@@ -148,24 +114,11 @@ const getScopeId = (cmp, mode) => 'sc-' + ( cmp.$tagName$);
  */
 const EMPTY_OBJ = {};
 const isDef = (v) => v != null;
-const noop = () => {
-    /* noop*/
-};
 const isComplexType = (o) => {
     // https://jsperf.com/typeof-fn-object/5
     o = typeof o;
     return o === 'object' || o === 'function';
 };
-const IS_DENO_ENV = typeof Deno !== 'undefined';
-const IS_NODE_ENV = !IS_DENO_ENV &&
-    typeof global !== 'undefined' &&
-    typeof require === 'function' &&
-    !!global.process &&
-    typeof __filename === 'string' &&
-    (!global.origin || typeof global.origin !== 'string');
-const IS_DENO_WINDOWS_ENV = IS_DENO_ENV && Deno.build.os === 'windows';
-const getCurrentDirectory = IS_NODE_ENV ? process.cwd : IS_DENO_ENV ? Deno.cwd : () => '/';
-const exit = IS_NODE_ENV ? process.exit : IS_DENO_ENV ? Deno.exit : noop;
 /**
  * Production h() function based on Preact by
  * Jason Miller (@developit)
@@ -541,7 +494,7 @@ const scheduleUpdate = (hostRef, isInitialLoad) => {
         return;
     }
     attachToAncestor(hostRef, hostRef.$ancestorComponent$);
-    // there is no ancestorc omponent or the ancestor component
+    // there is no ancestor component or the ancestor component
     // has already fired off its lifecycle update then
     // fire off the initial update
     const dispatch = () => dispatchHooks(hostRef, isInitialLoad);
@@ -554,7 +507,7 @@ const dispatchHooks = (hostRef, isInitialLoad) => {
     endSchedule();
     return then(promise, () => updateComponent(hostRef, instance, isInitialLoad));
 };
-const updateComponent = (hostRef, instance, isInitialLoad) => {
+const updateComponent = async (hostRef, instance, isInitialLoad) => {
     // updateComponent
     const elm = hostRef.$hostElement$;
     const endUpdate = createTime('update', hostRef.$cmpMeta$.$tagName$);
@@ -569,11 +522,10 @@ const updateComponent = (hostRef, instance, isInitialLoad) => {
             // looks like we've got child nodes to render into this host element
             // or we need to update the css class/attrs on the host element
             // DOM WRITE!
-            renderVdom(hostRef, callRender(hostRef, instance));
+            {
+                renderVdom(hostRef, callRender(hostRef, instance));
+            }
         }
-    }
-    if ( plt.$cssShim$) {
-        plt.$cssShim$.updateHost(elm);
     }
     if ( rc) {
         // ok, so turns out there are some child host elements
@@ -653,17 +605,6 @@ const postUpdateComponent = (hostRef) => {
     // ( •_•)
     // ( •_•)>⌐■-■
     // (⌐■_■)
-};
-const forceUpdate = (ref) => {
-    {
-        const hostRef = getHostRef(ref);
-        const isConnected = hostRef.$hostElement$.isConnected;
-        if (isConnected && (hostRef.$flags$ & (2 /* hasRendered */ | 16 /* isQueuedForUpdate */)) === 2 /* hasRendered */) {
-            scheduleUpdate(hostRef, false);
-        }
-        // Returns "true" when the forced update was successfully scheduled
-        return isConnected;
-    }
 };
 const appDidLoad = (who) => {
     // on appload
@@ -849,9 +790,6 @@ const initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId, Cstr) =>
             const scopeId = getScopeId(cmpMeta);
             if (!styles.has(scopeId)) {
                 const endRegisterStyles = createTime('registerStyles', cmpMeta.$tagName$);
-                if ( cmpMeta.$flags$ & 8 /* needsShadowDomShim */) {
-                    style = await Promise.resolve().then(function () { return require('./shadow-css-8d840853.js'); }).then(m => m.scopeCss(style, scopeId, false));
-                }
                 registerStyle(scopeId, style, !!(cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */));
                 endRegisterStyles();
             }
@@ -909,11 +847,7 @@ const connectedCallback = (elm) => {
                 });
             }
             {
-                // connectedCallback, taskQueue, initialLoad
-                // angular sets attribute AFTER connectCallback
-                // https://github.com/angular/angular/issues/18909
-                // https://github.com/angular/angular/issues/19940
-                nextTick(() => initializeComponent(elm, hostRef, cmpMeta));
+                initializeComponent(elm, hostRef, cmpMeta);
             }
         }
         endConnected();
@@ -923,10 +857,6 @@ const disconnectedCallback = (elm) => {
     if ((plt.$flags$ & 1 /* isTmpDisconnected */) === 0) {
         const hostRef = getHostRef(elm);
         const instance =  hostRef.$lazyInstance$ ;
-        // clear CSS var-shim tracking
-        if ( plt.$cssShim$) {
-            plt.$cssShim$.removeHost(elm);
-        }
         {
             safeCall(instance, 'disconnectedCallback');
         }
@@ -958,9 +888,6 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
         {
             cmpMeta.$watchers$ = {};
         }
-        if ( !supportsShadow && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
-            cmpMeta.$flags$ |= 8 /* needsShadowDomShim */;
-        }
         const tagName =  cmpMeta.$tagName$;
         const HostElement = class extends HTMLElement {
             // StencilLazyHost
@@ -974,13 +901,10 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
                     // and this browser supports shadow dom
                     // add the read-only property "shadowRoot" to the host element
                     // adding the shadow root build conditionals to minimize runtime
-                    if (supportsShadow) {
+                    {
                         {
                             self.attachShadow({ mode: 'open' });
                         }
-                    }
-                    else if ( !('shadowRoot' in self)) {
-                        self.shadowRoot = self;
                     }
                 }
             }
@@ -999,9 +923,6 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
             }
             disconnectedCallback() {
                 plt.jmp(() => disconnectedCallback(this));
-            }
-            forceUpdate() {
-                forceUpdate(this);
             }
             componentOnReady() {
                 return getHostRef(this).$onReadyPromise$;
@@ -1059,11 +980,11 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     if (module) {
         return module[exportName];
     }
-    return Promise.resolve().then(function () { return _interopNamespace(require(
+    return import(
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
-    `./${bundleId}.entry.js${ ''}`)); }).then(importedModule => {
+    `./${bundleId}.entry.js${ ''}`).then(importedModule => {
         {
             cmpModules.set(bundleId, importedModule);
         }
@@ -1114,15 +1035,4 @@ const flush = () => {
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
 const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
-exports.CSS = CSS;
-exports.Host = Host;
-exports.NAMESPACE = NAMESPACE;
-exports.bootstrapLazy = bootstrapLazy;
-exports.createEvent = createEvent;
-exports.doc = doc;
-exports.getElement = getElement;
-exports.h = h;
-exports.plt = plt;
-exports.promiseResolve = promiseResolve;
-exports.registerInstance = registerInstance;
-exports.win = win;
+export { Host as H, bootstrapLazy as b, createEvent as c, getElement as g, h, promiseResolve as p, registerInstance as r };

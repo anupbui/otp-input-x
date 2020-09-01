@@ -4,8 +4,8 @@
   ],
   "compiler": {
     "name": "@stencil/core",
-    "version": "1.17.3",
-    "typescriptVersion": "3.9.7"
+    "version": "2.0.1",
+    "typescriptVersion": "4.0.2"
   },
   "collections": [],
   "bundles": []

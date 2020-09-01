@@ -1,5 +1,11 @@
-import { b as bootstrapLazy } from './index-18c8be34.js';
-import { a as patchEsm } from './patch-53acd1a0.js';
+import { p as promiseResolve, b as bootstrapLazy } from './index-8194f660.js';
+
+/*
+ Stencil Client Patch Esm v2.0.1 | MIT Licensed | https://stenciljs.com
+ */
+const patchEsm = () => {
+    return promiseResolve();
+};
 
 const defineCustomElements = (win, options) => {
   if (typeof window === 'undefined') return Promise.resolve();

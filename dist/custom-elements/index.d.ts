@@ -1,6 +1,6 @@
 /* OtpInputX custom elements bundle */
 
-import { Components } from "../types/components";
+import { Components, JSX } from "../types/components";
 
 interface OtpInputX extends Components.OtpInputX, HTMLElement {}
 export const OtpInputX: {
@@ -31,5 +31,7 @@ export declare const defineCustomElements: (opts?: any) => void;
  * will have to ensure the static assets are copied to its build directory.
  */
 export declare const setAssetPath: (path: string) => void;
+
+export { Components, JSX };
 
 export * from '../types';
